@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: pos
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-pos}
+      POSTGRES_DB: gabanpos
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pos"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg2://pos:${DB_PASSWORD:-pos}@db:5432/gabanpos
+      JWT_SECRET: ${JWT_SECRET:-cambia-esto-en-produccion}
+      MASTER_EMAIL: ${MASTER_EMAIL:-master@gaban.pos}
+      MASTER_PASSWORD: ${MASTER_PASSWORD:-master123}
+      CORS_ORIGINS: "http://localhost:5173,http://localhost,https://gaban.spotynet.com,https://gaban-app.spotynet.com"
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3015:8000"
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "3014:80"
+
+volumes:
+  pgdata:

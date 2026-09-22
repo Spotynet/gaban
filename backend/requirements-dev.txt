@@ -1,0 +1,3 @@
+# Dependencias solo para pruebas
+-r requirements.txt
+pgserver==0.1.4   # PostgreSQL embebido para las pruebas de integración (sin root ni Docker)

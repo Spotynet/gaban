@@ -1,0 +1,24 @@
+# Override de PRODUCCIÓN para EC2.
+# Uso:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+#
+# Diferencias respecto a local:
+#  - La base de datos y el backend NO se publican al exterior (solo se comunican
+#    dentro de la red de Docker). El único puerto expuesto es el 80 del frontend,
+#    que hace de reverse proxy hacia /api. Abre solo 80/443 en el Security Group.
+#  - restart: always para que los servicios se reinicien solos.
+services:
+  db:
+    restart: always
+    ports: []          # no exponer PostgreSQL a Internet
+
+  backend:
+    restart: always
+    ports: []          # accesible solo vía el proxy del frontend
+    environment:
+      CORS_ORIGINS: ""  # mismo origen detrás de Nginx: no se necesita CORS
+
+  frontend:
+    restart: always
+    ports:
+      - "80:80"

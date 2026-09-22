@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GabAn — Punto de venta y gestión 360 en la nube</title>
+<style>
+  :root{ --brand:#4f46e5; --brand2:#7c3aed; --ink:#111827; --muted:#6b7280; --bg:#f7f7fb; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--ink); background:#fff; line-height:1.6; }
+  a{ color:var(--brand); text-decoration:none; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 20px; }
+  header{ position:sticky; top:0; background:rgba(255,255,255,.9); backdrop-filter:blur(8px); border-bottom:1px solid #eee; z-index:10; }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 20px; max-width:1080px; margin:0 auto; }
+  .logo{ font-size:22px; font-weight:800; letter-spacing:-.5px; }
+  .logo span{ background:linear-gradient(90deg,var(--brand),var(--brand2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .nav-links a{ margin-left:20px; color:var(--ink); font-size:14px; }
+  .btn{ display:inline-block; background:var(--brand); color:#fff; padding:12px 22px; border-radius:8px; font-weight:600; }
+  .btn:hover{ background:#4338ca; }
+  .hero{ text-align:center; padding:80px 20px 60px; background:radial-gradient(1200px 400px at 50% -10%, #eef2ff, #fff); }
+  .hero h1{ font-size:44px; line-height:1.15; letter-spacing:-1px; max-width:760px; margin:0 auto 18px; }
+  .hero p{ font-size:19px; color:var(--muted); max-width:620px; margin:0 auto 28px; }
+  .tag{ display:inline-block; background:#eef2ff; color:var(--brand); padding:6px 14px; border-radius:20px; font-size:13px; font-weight:600; margin-bottom:20px; }
+  section{ padding:60px 0; }
+  h2{ font-size:30px; text-align:center; margin-bottom:8px; letter-spacing:-.5px; }
+  .sub{ text-align:center; color:var(--muted); margin-bottom:40px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+  .card{ background:#fff; border:1px solid #eee; border-radius:14px; padding:24px; }
+  .card h3{ font-size:18px; margin-bottom:8px; }
+  .card p{ color:var(--muted); font-size:14px; }
+  .ic{ width:44px; height:44px; border-radius:10px; background:#eef2ff; display:flex; align-items:center; justify-content:center; font-size:22px; margin-bottom:14px; }
+  .alt{ background:var(--bg); }
+  .steps{ counter-reset:s; max-width:820px; margin:0 auto; }
+  .step{ display:flex; gap:16px; padding:18px 0; border-bottom:1px solid #eee; }
+  .step .num{ flex:none; width:36px; height:36px; border-radius:50%; background:var(--brand); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; }
+  .step h4{ font-size:16px; }
+  .step p{ color:var(--muted); font-size:14px; }
+  .faq{ max-width:820px; margin:0 auto; }
+  .faq details{ background:#fff; border:1px solid #eee; border-radius:10px; padding:14px 18px; margin-bottom:10px; }
+  .faq summary{ font-weight:600; cursor:pointer; }
+  .faq p{ color:var(--muted); font-size:14px; margin-top:8px; }
+  footer{ background:var(--ink); color:#cbd5e1; padding:40px 0; text-align:center; font-size:14px; }
+  .cta{ text-align:center; padding:70px 20px; background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; }
+  .cta h2{ color:#fff; }
+  .cta .btn{ background:#fff; color:var(--brand); margin-top:20px; }
+  @media(max-width:600px){ .hero h1{ font-size:32px; } .nav-links{ display:none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">Gab<span>An</span></div>
+    <nav class="nav-links">
+      <a href="#modulos">Módulos</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#docs">Documentación</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a href="#cta" class="btn">Solicitar demo</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="tag">Punto de venta + gestión 360 en la nube</div>
+    <h1>Vende, controla tu inventario y lleva tu contabilidad, todo en <span style="color:var(--brand)">GabAn</span></h1>
+    <p>Sistema multiempresa y multisucursal, en varias monedas (COP, MXN, USD), con caja táctil que funciona incluso sin internet. Ventas, compras, inventarios, contabilidad y reportes integrados.</p>
+    <a href="#cta" class="btn">Empezar ahora</a>
+  </div>
+</div>
+
+<section id="modulos" class="wrap">
+  <h2>Todo tu negocio en un solo lugar</h2>
+  <p class="sub">Módulos integrados que se sincronizan entre sí en tiempo real.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🛒</div><h3>Ventas y Caja</h3><p>POS y caja táctil, pedidos, promociones, pagos mixtos (efectivo, tarjeta, transferencia, cheque) y comprobante fiscal por país.</p></div>
+    <div class="card"><div class="ic">📦</div><h3>Inventarios</h3><p>Kardex por variante, ingresos y ajustes, traslados entre sucursales y alertas de stock mínimo.</p></div>
+    <div class="card"><div class="ic">🏷️</div><h3>Productos</h3><p>Catálogo por tipo (calzado, ropa, alimentos, electrónicos), corridas de tallas, códigos de barras EAN y fotos.</p></div>
+    <div class="card"><div class="ic">🚚</div><h3>Compras</h3><p>Proveedores, órdenes, recepción que ingresa inventario, cuentas por pagar y reabastecimiento automático.</p></div>
+    <div class="card"><div class="ic">📊</div><h3>Contabilidad</h3><p>Partida doble: plan de cuentas, asientos, balanza, estado de resultados, balance general y bancos.</p></div>
+    <div class="card"><div class="ic">📈</div><h3>Reportes</h3><p>Dashboard con KPIs, top de productos, valor de inventario y exportación a Excel y PDF.</p></div>
+    <div class="card"><div class="ic">👥</div><h3>Usuarios y roles</h3><p>Crea vendedores, compradores y contadores con permisos a la medida por empresa.</p></div>
+    <div class="card"><div class="ic">🔒</div><h3>Auditoría</h3><p>Bitácora completa de acciones por usuario, visible para el administrador del sistema.</p></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2 id="como">Cómo funciona</h2>
+    <p class="sub">De cero a vender en cuatro pasos.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><h4>Crea tu empresa y sucursales</h4><p>El administrador da de alta la empresa (tenant), sus sucursales y la moneda de cada una.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h4>Carga tu catálogo</h4><p>Registra productos con variantes, precios y códigos EAN, e ingresa el inventario inicial.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h4>Vende en caja</h4><p>Usa la caja táctil o el POS. Escanea el EAN, cobra con pago mixto e imprime el comprobante. Sigue vendiendo aunque se caiga el internet.</p></div></div>
+      <div class="step"><div class="num">4</div><div><h4>Controla y decide</h4><p>Consulta el dashboard, la contabilidad y los reportes exportables para tomar decisiones.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="docs" class="wrap">
+  <h2>Documentación de usuario</h2>
+  <p class="sub">Guía rápida por rol. La versión completa está en el manual de usuario.</p>
+  <div class="grid">
+    <div class="card"><h3>Administrador Master</h3><p>Crea empresas y sucursales, gestiona monedas y revisa la bitácora de auditoría de todo el sistema.</p></div>
+    <div class="card"><h3>Administrador de empresa</h3><p>Configura datos fiscales, crea usuarios y roles, y tiene acceso a todos los módulos de su empresa.</p></div>
+    <div class="card"><h3>Vendedor / Cajero</h3><p>Opera la caja táctil y el POS: escanea productos, aplica promociones, cobra e imprime comprobantes.</p></div>
+    <div class="card"><h3>Comprador</h3><p>Gestiona proveedores, crea y recibe órdenes de compra, y controla las cuentas por pagar.</p></div>
+    <div class="card"><h3>Inventarios</h3><p>Ingresa y ajusta stock, realiza traslados entre sucursales y consulta el kardex.</p></div>
+    <div class="card"><h3>Contador</h3><p>Registra asientos, concilia bancos y genera estados financieros.</p></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap faq" id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <p class="sub">&nbsp;</p>
+    <details><summary>¿Funciona sin internet?</summary><p>Sí. La caja táctil guarda las ventas localmente cuando no hay conexión y las sincroniza automáticamente al reconectar, sin duplicados.</p></details>
+    <details><summary>¿Puedo manejar varias empresas y sucursales?</summary><p>Sí. GabAn es multiempresa (cada una con sus datos aislados) y cada empresa puede tener varias sucursales con su propia moneda.</p></details>
+    <details><summary>¿Emite factura electrónica?</summary><p>Genera el comprobante con el formato fiscal de Colombia (DIAN) y México (SAT/CFDI). El timbrado legal se habilita conectando un proveedor autorizado (PAC).</p></details>
+    <details><summary>¿En qué monedas opera?</summary><p>COP, MXN y USD, con tipo de cambio configurable.</p></details>
+  </div>
+</section>
+
+<div class="cta" id="cta">
+  <div class="wrap">
+    <h2>Lleva tu negocio a otro nivel con GabAn</h2>
+    <p>Punto de venta, inventario y contabilidad, integrados y en la nube.</p>
+    <a href="mailto:ventas@gaban.pos" class="btn">Solicitar una demo</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="color:#fff; margin-bottom:8px;">Gab<span>An</span></div>
+    <p>© 2026 GabAn · Sistema de punto de venta y gestión 360 en la nube.</p>
+  </div>
+</footer>
+</body>
+</html>
