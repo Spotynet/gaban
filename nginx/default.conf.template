@@ -1,0 +1,53 @@
+# Gaban project nginx — single hostname, path-based /api/ (same as Vite proxy).
+# Hostname from ./dev.sh / ./deploy.sh via envsubst.
+
+server {
+    listen 80;
+    server_name ${GABAN_WEB_HOST};
+
+    location /api/ {
+        proxy_pass http://backend:3015;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        client_max_body_size 20m;
+    }
+
+    location / {
+        proxy_pass http://frontend:3014;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+
+server {
+    listen 80 default_server;
+    server_name _;
+
+    location /api/ {
+        proxy_pass http://backend:3015;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location / {
+        proxy_pass http://frontend:3014;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}

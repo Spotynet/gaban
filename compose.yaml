@@ -1,0 +1,45 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    environment:
+      CORS_ORIGINS: ${CORS_ORIGINS:-https://gaban-dev.spotynet.com,http://localhost:3014,http://127.0.0.1:3014}
+    volumes:
+      - ./backend:/app
+    expose:
+      - "3015"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    environment:
+      VITE_API_PROXY: ${VITE_API_PROXY:-http://backend:3015}
+    volumes:
+      - ./frontend:/app
+      - frontend_node_modules:/app/node_modules
+    expose:
+      - "3014"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "127.0.0.1:3023:80"
+    environment:
+      GABAN_WEB_HOST: ${GABAN_WEB_HOST:-gaban-dev.spotynet.com}
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+volumes:
+  frontend_node_modules:
